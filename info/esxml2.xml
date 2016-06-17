@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mydrive>
+ 	 <user username="mario123">
+		<name>Mario Santos</name>
+ 	 </user>
+ 	 <user username="feitor123">
+ 	 	<name>Pedro Feitor</name>
+ 	 </user>
+ 	<directory idf="400">
+		<name>cenas</name>
+		<owner>mario123</owner>
+		<mask>rwed----</mask>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/mario123</path>
+	</directory>
+	<directory idf="75">
+		<name>pastateste</name>
+		<owner>mario123</owner>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/mario123</path>
+	</directory>
+	<link idf="420">
+		<name>link1</name>
+		<owner>mario123</owner>
+		<mask>rwed----</mask>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/mario123</path>
+		<content>/cenas</content>
+	</link>
+	<app idf="453">
+		<name>app1</name>
+		<owner>mario123</owner>
+		<mask>rwed----</mask>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/mario123/pastateste</path>
+		<content>1programa</content>
+	</app>
+	<textfile idf="410">
+		<name>textfile1</name>
+		<owner>mario123</owner>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/mario123/pastateste</path>
+		<mask>rwed----</mask>
+		<content>Text file 1 para ver</content>
+	</textfile>
+</mydrive>

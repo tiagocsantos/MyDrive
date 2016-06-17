@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mydrive>
+ 	 <user username="tiago123">
+		<name>Tiago Santos</name>
+    	
+ 	 </user>
+ 	 <user username="sofas123">
+ 	 	<name>Sofia Martins</name>
+ 	 </user>
+	<directory idf="456">
+		<name>cenas</name>
+		<owner>tiago123</owner>
+		<mask>rwed----</mask>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/tiago123</path>
+	</directory>
+	<directory idf="60">
+		<name>cenas</name>
+		<owner>tiago123</owner>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/tiago123/cenas</path>
+	</directory>
+	<directory idf="50">
+		<name>cenas2</name>
+		<owner>tiago123</owner>
+		<mask>rwed----</mask>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/tiago123/cenas</path>
+	</directory>
+	<textfile idf="55">
+		<name>text2</name>
+		<owner>tiago123</owner>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/tiago123/cenas/cenas2</path>
+		<mask>rwed----</mask>
+		<content>Textfile 2 para ver</content>
+	</textfile>
+	<link idf="457">
+		<name>link1</name>
+		<owner>tiago123</owner>
+		<mask>rwed----</mask>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/tiago123</path>
+		<content>cenas</content>
+	</link>
+	<app idf="458">
+		<name>app1</name>
+		<owner>tiago123</owner>
+		<mask>rwed----</mask>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/tiago123/cenas</path>
+		<content>pt.ulisboa.tecnico.apps.SimpleApp</content>
+	</app>
+	<textfile idf="459">
+		<name>textfile1</name>
+		<owner>tiago123</owner>
+		<time>30/01/2015 00:00:00</time>
+		<path>/home/tiago123/cenas</path>
+		<mask>rwed----</mask>
+		<content>Text file 1 para ver</content>
+	</textfile>
+</mydrive>

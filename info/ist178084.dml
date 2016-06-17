@@ -1,0 +1,98 @@
+package pt.tecnico.mydrive.domain;
+
+class MyDrive;
+
+class Utilizador{
+	String username;
+	String password;
+	String name;
+	String mask;
+	String directory;
+}
+
+class Ficheiro{
+	Integer id;
+	String nome;
+	String dir;
+	String user;
+	String lastModified;
+	String permissions;
+}
+
+class Root extends Utilizador{
+
+}
+
+class FicheiroDeTexto extends Ficheiro{
+	String texto;
+}
+
+class Directoria extends Ficheiro{
+	Integer size;
+}
+
+class DirectoriaRoot extends Directoria{
+
+}
+
+class Ligacao extends FicheiroDeTexto{
+	String caminho;
+}
+
+class Aplicacao extends FicheiroDeTexto{
+
+}
+
+relation DomainRootHasMyDriveApp{
+	.pt.ist.fenixframework.DomainRoot playsRole root {
+	multiplicity 0..1;
+	}
+
+	MyDrive playsRole mydrive{
+		multiplicity 0..1;
+	}
+}
+
+relation MyDriveHasRoot{
+	MyDrive playsRole mydrive{
+		multiplicity 1;
+	}
+	Root playsRole root{
+		multiplicity 1;
+	}
+}
+relation RootHasDirectoriaRoot{
+	Root playsRole root{
+		multiplicity 1;
+	}
+	DirectoriaRoot playsRole directoriaroot{
+		multiplicity 1;
+	}
+}
+
+relation MyDriveHasUtilizador{
+	MyDrive playsRole mydrive{
+		multiplicity 1;
+	}
+	Utilizador playsRole utilizador{
+		multiplicity *;
+	}
+}
+
+relation UtilizadorHasFicheiros{
+	Utilizador playsRole utilizador{
+		multiplicity 1;
+	}
+	Ficheiro playsRole ficheiro{
+		multiplicity *;
+	}
+}
+
+relation DirectoriaHasFicheiro{
+	Directoria playsRole directoria{
+		multiplicity *;
+	}
+	Ficheiro playsRole ficheiro{
+		multiplicity *;
+	}
+}

@@ -1,0 +1,115 @@
+package pt.ulisboa.tecnico.mydrive.domain;
+
+class MyDrive {
+	int identificador;
+}
+
+relation DomainRootHasMyDriveApplication  {
+  .pt.ist.fenixframework.DomainRoot playsRole root { multiplicity 0..1; }
+  MyDrive playsRole mydrive { multiplicity 0..1; }
+}
+
+class User {
+	String username;
+	String password;
+	String name;
+	String umask;
+}
+
+class AmbientVar {
+	String name;
+	String value;
+}
+	
+class Files{
+	Integer idf;
+	String name;
+  String mask;
+	DateTime lastmod;
+}
+
+class Association{
+	String Extension;
+}
+
+class Directory extends Files;
+class FileText extends Files{
+	String content;
+}
+
+class Link extends FileText;
+class App extends FileText;
+class Raiz extends Directory;
+class Root extends User;
+class Nobody extends User;
+
+relation MyDriveHasVisitor {
+	Nobody playsRole visitor {multiplicity 1;}
+ 	MyDrive playsRole mydrive {multiplicity 1;}
+}
+
+class Login{
+	long token;
+  	DateTime logintime;
+ 
+ }
+
+relation LoginHasVars {
+	Login playsRole Login {multiplicity 1;}
+	AmbientVar playsRole var {multiplicity *;}
+}
+
+relation LogsOnMyDrive {
+  	Login playsRole session { multiplicity *; }
+  	MyDrive playsRole myDrive { multiplicity 1; }
+}
+
+relation AssociationHasFile {
+  	Association playsRole extension { multiplicity 1; }
+  	FileText playsRole executable { multiplicity 1; }
+}
+
+relation LogsUser {
+  Login playsRole session {multiplicity *;}
+  User playsRole  sessionOwner {multiplicity 1;}
+ }
+
+relation WorkingDir {
+  Login playsRole session { multiplicity *; }
+  Directory playsRole currentDir { multiplicity 1; }
+}
+
+relation MyDrive_tem_users {
+  MyDrive playsRole myDrive { multiplicity 1; }
+  User playsRole user { multiplicity *; }
+}
+
+relation Directories_tem_Fichs {
+  Directory playsRole directory{ multiplicity 1; }
+  Files playsRole fichs { multiplicity *; }
+}
+
+relation MyDrivetemRoot {
+  Root playsRole superuser {multiplicity 1;}
+  MyDrive playsRole mydrive {multiplicity 1;}
+}
+
+relation MyDrivetemRaiz {
+  Raiz playsRole raiz {multiplicity 1;}
+  MyDrive playsRole mydrive {multiplicity 1;}
+}
+
+relation UserHasFiles {
+  User playsRole onwer {multiplicity 1;}
+  Files playsRole owned {multiplicity *;}
+}
+
+relation UserHasMainDir {
+	User playsRole homeowner {multiplicity 1;}
+	Directory playsRole mainDir {multiplicity 1;}	
+} 
+
+relation UserHasAssociations {
+	User playsRole onwer {multiplicity 1;}
+	Association playsRole assoc {multiplicity 1;}
+}

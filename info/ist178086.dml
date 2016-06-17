@@ -1,0 +1,69 @@
+package pt.ulisboa.tecnico.phone;
+
+class MyDrive {
+}
+
+relation DomainApplication {
+  .pt.ist.fenixframework.DomainRoot playsRole root { multiplicity 1..1; }
+  MyDrive playsRole myDrive { multiplicity 0..1; }
+}
+
+class User {
+  String username;
+  String password;
+  String name;
+  String mask;
+}
+
+class Files{
+  Integer id;
+  String namef;
+  String path;
+  String content;
+  String owner;
+  String permissions;
+  DataTime timeStamp;
+
+class Directory{
+  Integer size;
+}
+
+class Root extends Utilizador;
+
+
+relation MyDrivetemUsers {
+  MyDrive playsRole myDrive { multiplicity 1; }
+  User playsRole user { multiplicity *; }
+}
+
+relation MyDrivetemRoot {
+  MyDrive playsRole myDrive { multiplicity 1; }
+  Root playsRole root { multiplicity 1; }
+}
+
+
+relation UsertemHome{
+  User playsRole user { multiplicity 1; }
+  Home playsRole home {multiplicity 1; }
+}
+
+relation UsertemFiles{
+	User playsRole user { multiplicity 1; }
+	Files playsRole files {multiplicity *; }
+}
+
+relation MyDrivetemDirectories {
+  MyDrive playsRole myDrive { multiplicity 1; }
+  Directory playsRole directory { multiplicity *; }
+}
+
+relation DirectoriestemFiles {
+  Directory playsRole directory{ multiplicity 1; }
+  Files playsRole files { multiplicity *; }
+}
+
+relation DirectoriestemDirectories {
+  Directory playsRole directory{ multiplicity 1; }
+  Directory playsRole directory2{ multiplicity *; }
+}
+

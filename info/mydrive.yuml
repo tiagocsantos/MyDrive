@@ -1,0 +1,22 @@
+[MyDrive]
+[.pt.ist.fenixframework.DomainRoot]0..1 root - mydrive 0..1[MyDrive] // DomainRootHasMyDriveApplication
+[User| String username; String password; String name; String umask;]
+[Files| Integer idf; String name; String mask; DateTime lastmod;]
+[Files]^-[Directory]
+[Directory]
+[Files]^-[FileText]
+[FileText| String content;]
+[FileText]^-[Link]
+[Link]
+[FileText]^-[App]
+[App]
+[Directory]^-[Raiz]
+[Raiz]
+[User]^-[Root]
+[Root]
+[MyDrive]1 myDrive - user *[User] // MyDrive_tem_users
+[User]1 user - fichs *[Files] // User_tem_Fichs
+[Directory]1 directory - fichs *[Files] // Directories_tem_Fichs
+[Root]1 superuser - mydrive 1[MyDrive] // MyDrivetemRoot
+[Raiz]1 raiz - mydrive 1[MyDrive] // MyDrivetemRaiz
+[User]1 onwer - owned *[Files] // UserHasFiles
